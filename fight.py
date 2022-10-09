@@ -14,7 +14,6 @@ class Fighter:
 
     def time_to_attack(self) -> None:
         self.attack_time = self.attackpoints + self.defencepoints + self.mass
-        #return round(self.attack_time,1)
 
     def next_attack_time(self) -> None:
         self.next_attack += self.attack_time
