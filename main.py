@@ -1,10 +1,6 @@
-from fight import Fighter, Turn
+from fight import Turn
 from time import sleep
-
-# Function to calculate happening of first attack for evert fighter
-def calculate_attack_times(*fighters:Fighter):
-    for fighter in fighters:
-        fighter.next_attack_time()
+from data import Fighter, setup
 
 # Actions for every turn    
 def do_turn(attacker:Fighter, defender:Fighter, attack_time:float):
@@ -19,14 +15,6 @@ def attack_turn(*fighters: Fighter):
             next_attacker = [fighter, fighter.next_attack]
     return next_attacker 
 
-#Function to do initial setup of Fighters
-def setup() -> Fighter:
-    f1 = Fighter(1,"Carrot", 53, 15.6, 0.6, 0.2)
-    f1.time_to_attack()
-    f2 = Fighter(2,"Broccoli", 35, 7.6, 0.4, 0.7)
-    f2.time_to_attack()     
-    calculate_attack_times(f1,f2)
-    return f1,f2
 
 def main():
     fighters_pool = setup()
