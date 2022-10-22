@@ -3,7 +3,7 @@ from data import Fighter
 class Turn:
     # Take Attackpoints and subtract defender's defencepoints to get the power of attack
     def calculate_damage(attacker_power:float, defender_strength:float) -> float:
-        return round(attacker_power - defender_strength,2)
+        return round(attacker_power * (1 - (defender_strength/100)),2)
 
     #Method to make an attack
     def attack(attack_power:float, attacker:Fighter, defender:Fighter, attack_time:float) -> str:
@@ -11,7 +11,6 @@ class Turn:
         if defender.healthpoints <= 0:
             defender.healthpoints = 0
             defender.alive = False
-            return f'{attack_time}s: {attacker.name} has done {attack_power} points of damage and won the battle! \n \nWINNER: {attacker.name}'
+            return f'{attack_time:4}s: {attacker.name} has done {attack_power} points of damage and won the battle! \n \nWINNER: {attacker.name} with {round(attacker.healthpoints,2)} healthpoints left!'
         else:
-            return f'{attack_time}s: {attacker.name} has done {attack_power} points of damage! {defender.name} has {round(defender.healthpoints,2)} healthpoints left!'
-
+            return f'{attack_time:4}s: {attacker.name} has done {attack_power} points of damage! {defender.name} has {round(defender.healthpoints,2)} healthpoints left!'

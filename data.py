@@ -4,15 +4,18 @@ import numpy as np
 from time import sleep
 from dataclasses import dataclass
 
+HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
+FOODS = ['omena','appelsiini','porkkana', 'parsakaali', 'peruna', 'banaani', 'lanttu','tomaatti','avokado']
+
 # Class to hold fighter specs
 @dataclass
 class Fighter:
     fighter_id: int
     name: str
-    healthpoints: int # Energy kcal
     attackpoints: float # Carbs
-    defencepoints: float # Proteins
+    healthpoints: int # Energy kcal
     mass: int # Fats
+    defencepoints: float # Proteins
     attack_time: float = 0
     alive: bool = True
     next_attack: float = 0
@@ -27,9 +30,6 @@ class Fighter:
         self.next_attack = round(self.next_attack,2)
 
 # Get data
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
-FOODS = ['omena','appelsiini','porkkana', 'parsakaali', 'peruna', 'banaani', 'lanttu','tomaatti','avokado']
-
 def fetch_data(food_list:list, header_data:dict)-> pd.DataFrame:
     df = pd.DataFrame()
     for food in food_list:
@@ -76,6 +76,7 @@ def fetch_data(food_list:list, header_data:dict)-> pd.DataFrame:
                                             'fat': np.mean,
                                             'protein': np.mean,
                                             'carbohydrate': np.mean})
+    table.reset_index(inplace=True)
     
     # Rounding values
     cols = ['energyKcal', 'fat', 'protein', 'carbohydrate']
@@ -91,11 +92,11 @@ def calculate_attack_times(*fighters:Fighter) -> None:
         fighter.next_attack_time()
 
 #Function to do initial setup of Fighters
-def setup() -> Fighter:
+def setup(fighter_num1:int, fighter_num2:int) -> Fighter:
     data = fetch_data(FOODS, HEADERS).values.tolist()
-    f1 = Fighter(1,"Carrot", 53, 15.6, 0.6, 0.2)
+    f1 = Fighter(1, data[fighter_num1][0],data[fighter_num1][1],data[fighter_num1][2],data[fighter_num1][3],data[fighter_num1][4])
     f1.time_to_attack()
-    f2 = Fighter(2,"Broccoli", 35, 7.6, 0.4, 0.7)
+    f2 = Fighter(2,data[fighter_num2][0],data[fighter_num2][1],data[fighter_num2][2],data[fighter_num2][3],data[fighter_num2][4])
     f2.time_to_attack()     
     calculate_attack_times(f1,f2)
     return f1,f2
