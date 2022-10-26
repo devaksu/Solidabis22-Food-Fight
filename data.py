@@ -4,9 +4,6 @@ import numpy as np
 from time import sleep
 from dataclasses import dataclass
 
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.76 Safari/537.36'}
-FOODS = ['omena','appelsiini','porkkana', 'parsakaali', 'peruna', 'banaani', 'lanttu','tomaatti','avokado']
-
 # Class to hold fighter specs
 @dataclass
 class Fighter:
@@ -85,15 +82,13 @@ def fetch_data(food_list:list, header_data:dict)-> pd.DataFrame:
     
     return table
 
-
 # Function to calculate happening of first attack for evert fighter
 def calculate_attack_times(*fighters:Fighter) -> None:
     for fighter in fighters:
         fighter.next_attack_time()
 
 #Function to do initial setup of Fighters
-def setup(fighter_num1:int, fighter_num2:int) -> Fighter:
-    data = fetch_data(FOODS, HEADERS).values.tolist()
+def setup(data:list, fighter_num1:int, fighter_num2:int) -> Fighter:
     f1 = Fighter(1, data[fighter_num1][0],data[fighter_num1][1],data[fighter_num1][2],data[fighter_num1][3],data[fighter_num1][4])
     f1.time_to_attack()
     f2 = Fighter(2,data[fighter_num2][0],data[fighter_num2][1],data[fighter_num2][2],data[fighter_num2][3],data[fighter_num2][4])
