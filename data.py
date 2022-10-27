@@ -82,7 +82,7 @@ def fetch_data(food_list:list, header_data:dict)-> pd.DataFrame:
     
     return table
 
-# Function to calculate happening of first attack for evert fighter
+# Function to calculate happening of first attack for every fighter
 def calculate_attack_times(*fighters:Fighter) -> None:
     for fighter in fighters:
         fighter.next_attack_time()

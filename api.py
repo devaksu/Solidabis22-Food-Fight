@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fight import do_turn, attack_turn, determine_fighters, start
+from fight import attack_turn, determine_fighters, do_turn, start
 from data import fetch_data
 import os
 

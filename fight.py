@@ -46,5 +46,4 @@ def start(file:str) -> None:
     with open(file, 'a') as f:
         f.write(f"{30*'='} Welcome to the FOOD FIGHT!{30*'='}" + '\n')
         f.write(f'{87*"="}\n')
-
         f.write(f"LET'S GET READY TO RUMBLE!!" + '\n')
