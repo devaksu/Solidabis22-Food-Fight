@@ -14,6 +14,10 @@ def write_result(data:str) -> None:
 
 app = FastAPI()
 
+@app.get("/fighters")
+def fighters() -> list[str]:
+    return FOODS
+    
 @app.get("/")
 def battle() -> list[str]:
     if os.path.exists(FILE):
