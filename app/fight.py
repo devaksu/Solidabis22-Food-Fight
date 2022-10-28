@@ -1,4 +1,4 @@
-from data import Fighter, setup
+from app.data import Fighter, setup
 import random
 
 class Turn:

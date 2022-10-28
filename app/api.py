@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from fight import attack_turn, determine_fighters, do_turn, start
-from data import fetch_data
+from app.fight import attack_turn, determine_fighters, do_turn, start
+from app.data import fetch_data
 import os
 
 FILE = 'battle.txt'
