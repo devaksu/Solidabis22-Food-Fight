@@ -34,7 +34,7 @@ Perus statsit täytyy löytyä ja olla kaavan mukaan. On kuitenkin lupa lisätä
 
 ### Specs:
 
-    - Developed on MacOS Monterey and Windows 11.
+    - Developed on MacOS Monterey (Intel) and Windows 11.
     - Dockerized and tested on MacOS Ventura
     - Python 3.9
     - FastAPI and uvicorn.
