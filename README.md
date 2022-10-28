@@ -36,7 +36,7 @@ Perus statsit täytyy löytyä ja olla kaavan mukaan. On kuitenkin lupa lisätä
 
     - Developed on MacOS Monterey and Windows 11.
     - Dockerized and tested on MacOS Ventura
-    - Python 3.10.4.
+    - Python 3.9
     - FastAPI and uvicorn.
     - Firefox shows output very readably by default
 
