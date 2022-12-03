@@ -18,10 +18,12 @@ class Fighter:
     next_attack: float = 0
 
     # Method to calculate how frequently fighter attacks
+    @property
     def time_to_attack(self) -> None:
         self.attack_time = self.attackpoints + self.defencepoints + self.mass
 
     #Method to calculate when next attack is going to happen
+    @property
     def next_attack_time(self) -> None:
         self.next_attack += self.attack_time
         self.next_attack = round(self.next_attack,2)
